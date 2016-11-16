@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewTagCell" customModule="Tags" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="238" height="39"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="238" height="39"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-LE-Vyk">
+                        <rect key="frame" x="2" y="2" width="234" height="35"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sm7-P6-Uda">
+                        <rect key="frame" x="4" y="9.5" width="194" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="0.34808433219178081" colorSpace="calibratedWhite"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="textDidChange:" destination="gTV-IL-0wX" eventType="valueChanged" id="Qr8-ld-LAA"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-h7-c52">
+                        <rect key="frame" x="200" y="1.5" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="8fg-bt-RZn"/>
+                            <constraint firstAttribute="height" constant="36" id="bFT-SA-lqC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="+">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnAddTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Lsp-O7-jNN"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="JOf-LE-Vyk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="8P4-xP-Wpn"/>
+                <constraint firstItem="8F9-h7-c52" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DqM-gd-rua"/>
+                <constraint firstAttribute="trailing" secondItem="8F9-h7-c52" secondAttribute="trailing" constant="2" id="QgU-YB-fhH"/>
+                <constraint firstItem="JOf-LE-Vyk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="TYO-nt-rdC"/>
+                <constraint firstItem="8F9-h7-c52" firstAttribute="leading" secondItem="Sm7-P6-Uda" secondAttribute="trailing" constant="2" id="bej-MV-Dg3"/>
+                <constraint firstAttribute="trailing" secondItem="JOf-LE-Vyk" secondAttribute="trailing" constant="2" id="iY4-zg-I2E"/>
+                <constraint firstItem="Sm7-P6-Uda" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qqg-b5-MYh"/>
+                <constraint firstItem="Sm7-P6-Uda" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ubC-lF-Szn"/>
+                <constraint firstAttribute="bottom" secondItem="JOf-LE-Vyk" secondAttribute="bottom" constant="2" id="zpS-VP-N7y"/>
+            </constraints>
+            <size key="customSize" width="243" height="50"/>
+            <connections>
+                <outlet property="btnAdd" destination="8F9-h7-c52" id="E6z-tQ-Uo2"/>
+                <outlet property="txfTag" destination="Sm7-P6-Uda" id="CIZ-1m-T0w"/>
+            </connections>
+            <point key="canvasLocation" x="142" y="53.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

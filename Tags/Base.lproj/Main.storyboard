@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tags" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oCh-a3-0k4">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yaI-5d-khe">
+                                    <size key="itemSize" width="375" height="117"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoa-Ww-tla">
+                                <rect key="frame" x="16" y="629" width="82" height="30"/>
+                                <state key="normal" title="Edit/Display"/>
+                                <connections>
+                                    <action selector="btnEditDisplayTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rW2-WK-reP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-sC-HzC">
+                                <rect key="frame" x="143" y="629" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="btnResetTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WsL-PQ-1R1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlV-go-ks1">
+                                <rect key="frame" x="215" y="629" width="152" height="30"/>
+                                <state key="normal" title="Only available tags off"/>
+                                <connections>
+                                    <action selector="btnAvailableTagesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cj4-s5-6Vl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rlV-go-ks1" secondAttribute="trailing" constant="8" id="4fx-Yy-Ori"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rlV-go-ks1" secondAttribute="bottom" constant="8" id="8VZ-Ez-IvN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Uoa-Ww-tla" secondAttribute="bottom" constant="8" id="Aka-qM-5aH"/>
+                            <constraint firstAttribute="trailing" secondItem="oCh-a3-0k4" secondAttribute="trailing" id="EL6-Kz-fdu"/>
+                            <constraint firstItem="Uoa-Ww-tla" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qqb-F4-y6b"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ywH-sC-HzC" secondAttribute="bottom" constant="8" id="ROe-zb-F18"/>
+                            <constraint firstItem="rlV-go-ks1" firstAttribute="leading" secondItem="ywH-sC-HzC" secondAttribute="trailing" constant="33" id="cTf-e7-Y7V"/>
+                            <constraint firstItem="oCh-a3-0k4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="frw-gI-D9n"/>
+                            <constraint firstItem="oCh-a3-0k4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sqB-tS-KPb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oCh-a3-0k4" secondAttribute="bottom" id="z8a-Q1-oWc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnEditDisplay" destination="Uoa-Ww-tla" id="afF-S7-Dgh"/>
+                        <outlet property="cvContent" destination="oCh-a3-0k4" id="NH6-3W-QhJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TagCell" customModule="Tags" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTy-JC-0uz">
+                        <rect key="frame" x="2" y="2" width="196" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7x-9f-i8o">
+                                <rect key="frame" x="2" y="13.5" width="192" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F20-G1-3TX">
+                                <rect key="frame" x="204" y="6" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="De7-H2-A2b"/>
+                                    <constraint firstAttribute="height" constant="35" id="Epz-G8-ULM"/>
+                                </constraints>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDeleteTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="d2q-iI-wxb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="z7x-9f-i8o" secondAttribute="trailing" constant="2" id="2yx-D0-uGB"/>
+                            <constraint firstItem="z7x-9f-i8o" firstAttribute="leading" secondItem="hTy-JC-0uz" secondAttribute="leading" constant="2" id="DdW-ZY-nJq"/>
+                            <constraint firstItem="z7x-9f-i8o" firstAttribute="centerY" secondItem="hTy-JC-0uz" secondAttribute="centerY" id="bJ9-0m-HwA"/>
+                            <constraint firstItem="F20-G1-3TX" firstAttribute="leading" secondItem="z7x-9f-i8o" secondAttribute="trailing" constant="10" id="qhH-oO-QJR"/>
+                            <constraint firstItem="F20-G1-3TX" firstAttribute="centerY" secondItem="hTy-JC-0uz" secondAttribute="centerY" id="sun-ub-dCW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="hTy-JC-0uz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="8lc-6B-ZHy"/>
+                <constraint firstAttribute="bottom" secondItem="hTy-JC-0uz" secondAttribute="bottom" constant="2" id="M9U-3T-6Xm"/>
+                <constraint firstAttribute="trailing" secondItem="hTy-JC-0uz" secondAttribute="trailing" constant="2" id="a4b-l0-ex0"/>
+                <constraint firstItem="hTy-JC-0uz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="kGt-bS-Yee"/>
+            </constraints>
+            <size key="customSize" width="200" height="50"/>
+            <connections>
+                <outlet property="btnDelete" destination="F20-G1-3TX" id="k64-UH-GM4"/>
+                <outlet property="constrLblTagTrailing" destination="2yx-D0-uGB" id="Dn1-az-KOj"/>
+                <outlet property="lblTag" destination="z7x-9f-i8o" id="phU-gI-Xn2"/>
+                <outlet property="vBackground" destination="hTy-JC-0uz" id="tja-8r-thg"/>
+            </connections>
+            <point key="canvasLocation" x="-29" y="-47"/>
+        </collectionViewCell>
+    </objects>
+</document>
