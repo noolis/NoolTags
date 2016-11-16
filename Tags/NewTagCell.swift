@@ -22,13 +22,14 @@ class NewTagCell: UICollectionViewCell {
         super.awakeFromNib()
         
         txfTag.delegate = self
+        txfTag.font = TagCellParams.font
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {
         
         mode = mode == .display ? .edit : .display
         
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.btnAdd.transform = self.btnAdd.transform.rotated(by: CGFloat(M_PI_4))
         })
         

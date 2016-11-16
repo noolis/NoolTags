@@ -20,13 +20,14 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-LE-Vyk">
                         <rect key="frame" x="2" y="2" width="234" height="35"/>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sm7-P6-Uda">
-                        <rect key="frame" x="4" y="9.5" width="194" height="20"/>
-                        <color key="backgroundColor" white="1" alpha="0.34808433219178081" colorSpace="calibratedWhite"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="12" y="11" width="186" height="17"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <action selector="textDidChange:" destination="gTV-IL-0wX" eventType="valueChanged" id="Qr8-ld-LAA"/>
@@ -34,13 +35,14 @@
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-h7-c52">
                         <rect key="frame" x="200" y="1.5" width="36" height="36"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="8fg-bt-RZn"/>
                             <constraint firstAttribute="height" constant="36" id="bFT-SA-lqC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <state key="normal" title="+">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
                             <action selector="btnAddTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Lsp-O7-jNN"/>
@@ -48,6 +50,7 @@
                     </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="JOf-LE-Vyk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="8P4-xP-Wpn"/>
                 <constraint firstItem="8F9-h7-c52" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DqM-gd-rua"/>
@@ -56,7 +59,7 @@
                 <constraint firstItem="8F9-h7-c52" firstAttribute="leading" secondItem="Sm7-P6-Uda" secondAttribute="trailing" constant="2" id="bej-MV-Dg3"/>
                 <constraint firstAttribute="trailing" secondItem="JOf-LE-Vyk" secondAttribute="trailing" constant="2" id="iY4-zg-I2E"/>
                 <constraint firstItem="Sm7-P6-Uda" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qqg-b5-MYh"/>
-                <constraint firstItem="Sm7-P6-Uda" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ubC-lF-Szn"/>
+                <constraint firstItem="Sm7-P6-Uda" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="ubC-lF-Szn"/>
                 <constraint firstAttribute="bottom" secondItem="JOf-LE-Vyk" secondAttribute="bottom" constant="2" id="zpS-VP-N7y"/>
             </constraints>
             <size key="customSize" width="243" height="50"/>

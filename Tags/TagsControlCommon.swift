@@ -38,18 +38,19 @@ struct CellId {
     static let tag = "TagCell"
     static let newTag = "NewTagCell"
     static let tagsControl = "TagsControlCell"
-    
 }
 
-struct TagCellConstants {
+struct TagCellParams {
     
-    static let font = UIFont.systemFont(ofSize: 16)
-    static let leftMargin = CGFloat(4)
-    static let rightMargin = CGFloat(12)
-    static let buttonWidth = CGFloat(35)
-    static let height = CGFloat(40)
+    static var font = UIFont.systemFont(ofSize: 14)
+    static var leftMargin = CGFloat(12)
+    static var rightMargin = CGFloat(2)
+    static var buttonWidth = CGFloat(36)
+    static var height = CGFloat(40)
     
-    static let lblTrailingConstantForDisplay = CGFloat(10)
-    static let lblTrailingConstantForEdit = CGFloat(50)
+    static var lblTrailingConstantForDisplay = CGFloat(10)
+    static var lblTrailingConstantForEdit = CGFloat(50)
     
+    static var btnDeleteImage = UIImage()
+    static var btnAddImage = UIImage()
 }

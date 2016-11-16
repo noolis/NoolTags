@@ -13,17 +13,20 @@ class TagCell: UICollectionViewCell {
     @IBOutlet weak var vBackground: UIView!
     @IBOutlet weak var lblTag: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
-    @IBOutlet weak var constrLblTagTrailing: NSLayoutConstraint!
     
-    var mode = TagCellMode.display {
+    @IBOutlet weak var constrBtnDeleteLeading: NSLayoutConstraint!
+    
+    var mode = TagCellMode.display
+    var text: String = "" {
         didSet {
-            UIView.animate(withDuration: 0.3) { [unowned self] in
-                let width: CGFloat = self.mode == .display ?
-                    TagCellConstants.lblTrailingConstantForDisplay :
-                    TagCellConstants.lblTrailingConstantForEdit
-                self.constrLblTagTrailing.constant = width
-            }
+            lblTag.text = text
+            
+            let value = TagCellParams.leftMargin + text.size(attributes:
+                [NSFontAttributeName: TagCellParams.font]).width
+            constrBtnDeleteLeading.constant = value
+            self.layoutIfNeeded()
         }
+        
     }
     var indexPath: IndexPath?
     var delegate: TagCellDelegate?
@@ -32,9 +35,13 @@ class TagCell: UICollectionViewCell {
         super.awakeFromNib()
         
         mode = .display
+        lblTag.font = TagCellParams.font
+        
     }
     
     @IBAction func btnDeleteTapped(_ sender: Any) {
+        
+        guard mode == .edit else { return }
         
         if let delegate = delegate, let indexPath = indexPath {
             delegate.tagCellDeleted(at: indexPath)

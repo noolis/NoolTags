@@ -22,13 +22,15 @@
                         <rect key="frame" x="2" y="2" width="196" height="46"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7x-9f-i8o">
-                                <rect key="frame" x="2" y="13.5" width="192" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="10" y="15" width="35.5" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F20-G1-3TX">
                                 <rect key="frame" x="204" y="6" width="35" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="De7-H2-A2b"/>
                                     <constraint firstAttribute="height" constant="35" id="Epz-G8-ULM"/>
@@ -43,10 +45,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.44705882349999998" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="z7x-9f-i8o" secondAttribute="trailing" constant="2" id="2yx-D0-uGB"/>
-                            <constraint firstItem="z7x-9f-i8o" firstAttribute="leading" secondItem="hTy-JC-0uz" secondAttribute="leading" constant="2" id="DdW-ZY-nJq"/>
+                            <constraint firstItem="z7x-9f-i8o" firstAttribute="leading" secondItem="hTy-JC-0uz" secondAttribute="leading" constant="10" id="DdW-ZY-nJq"/>
                             <constraint firstItem="z7x-9f-i8o" firstAttribute="centerY" secondItem="hTy-JC-0uz" secondAttribute="centerY" id="bJ9-0m-HwA"/>
-                            <constraint firstItem="F20-G1-3TX" firstAttribute="leading" secondItem="z7x-9f-i8o" secondAttribute="trailing" constant="10" id="qhH-oO-QJR"/>
+                            <constraint firstItem="F20-G1-3TX" firstAttribute="leading" secondItem="hTy-JC-0uz" secondAttribute="leading" constant="204" id="kGz-Ex-GG8"/>
+                            <constraint firstItem="F20-G1-3TX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z7x-9f-i8o" secondAttribute="trailing" id="qhH-oO-QJR"/>
                             <constraint firstItem="F20-G1-3TX" firstAttribute="centerY" secondItem="hTy-JC-0uz" secondAttribute="centerY" id="sun-ub-dCW"/>
                         </constraints>
                     </view>
@@ -61,7 +63,7 @@
             <size key="customSize" width="200" height="50"/>
             <connections>
                 <outlet property="btnDelete" destination="F20-G1-3TX" id="k64-UH-GM4"/>
-                <outlet property="constrLblTagTrailing" destination="2yx-D0-uGB" id="Dn1-az-KOj"/>
+                <outlet property="constrBtnDeleteLeading" destination="kGz-Ex-GG8" id="hYb-I7-hkK"/>
                 <outlet property="lblTag" destination="z7x-9f-i8o" id="phU-gI-Xn2"/>
                 <outlet property="vBackground" destination="hTy-JC-0uz" id="tja-8r-thg"/>
             </connections>

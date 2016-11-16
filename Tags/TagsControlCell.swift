@@ -87,7 +87,6 @@ class TagsControlCell: UICollectionViewCell {
         
         cvTags.reloadData()
         
-        cvTags.backgroundColor = .green
         if let delegate = delegate {
             delegate.tagsControlNeedsUpdate(height: cvTags.contentSize.height)
         }
@@ -187,7 +186,7 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.delegate = self
         cell.indexPath = indexPath
         cell.mode = mode
-        cell.lblTag.text = tags[indexPath.row]
+        cell.text = tags[indexPath.row]
         
         return cell
         
@@ -200,24 +199,27 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
         if mode == .edit && indexPath.row == tags.count {
             
             if newTagCellMode == .display {
-                return CGSize(width: 40, height: 40)
+                return CGSize(width: TagCellParams.height,
+                              height: TagCellParams.height)
             } else {
-                let width = max(90, 45 + newTagText.size(attributes:
-                    [NSFontAttributeName: TagCellConstants.font]).width)
-                return CGSize(width: width, height: 40)
+                let width = max(102,
+                                min(52 + newTagText.size(attributes:
+                    [NSFontAttributeName: TagCellParams.font]).width,
+                                    collectionView.frame.width))
+                return CGSize(width: width, height: TagCellParams.height)
             }
         }
         
         let tag = tags[indexPath.row]
         
-        var width = tag.size(attributes: [NSFontAttributeName: TagCellConstants.font]).width
-        width += (mode == .display ? 0 :
-            TagCellConstants.buttonWidth) + TagCellConstants.leftMargin
-                + TagCellConstants.rightMargin + 10
+        var width = tag.size(attributes: [NSFontAttributeName: TagCellParams.font]).width
+        width += (mode == .display ? TagCellParams.lblTrailingConstantForDisplay :
+            TagCellParams.buttonWidth) + TagCellParams.leftMargin
+                + TagCellParams.rightMargin
         
         width = min(width, collectionView.frame.width)
         
-        return CGSize(width: width, height: TagCellConstants.height)
+        return CGSize(width: width, height: TagCellParams.height)
         
     }
     
