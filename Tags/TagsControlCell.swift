@@ -150,6 +150,7 @@ extension TagsControlCell: NewTagCellDelegate, TagCellDelegate {
             if let delegate = self.delegate {
                 delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
             }
+            self.cvTags.reloadData()
         })
     }
 }
