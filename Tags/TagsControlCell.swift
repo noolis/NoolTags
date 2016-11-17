@@ -72,6 +72,15 @@ class TagsControlCell: UICollectionViewCell {
     
     var delegate: TagsControlCellDelegate?
     
+    var autocompleteResults: [String] {
+        get {
+            let notUsedTags = availableTags.filter { !tags.contains($0) }
+            return notUsedTags.filter { $0.lowercased().contains(newTagText.lowercased()) }
+        }
+    }
+    
+    var tvAutocomplete: UITableView?
+    
     //MARK: - UICollectionViewCell
     
     override func awakeFromNib() {
@@ -114,6 +123,7 @@ extension TagsControlCell: NewTagCellDelegate, TagCellDelegate {
     func newTagCellDidChange(text: String) {
         
         newTagText = text
+        tvAutocomplete?.reloadData()
         cvTags.performBatchUpdates(nil, completion: { didComplete in
             
             if let delegate = self.delegate {
@@ -176,6 +186,9 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
             
             cell.delegate = self
             cell.mode = newTagCellMode
+            tvAutocomplete = cell.tvAutocomplete
+            tvAutocomplete?.delegate = self
+            tvAutocomplete?.dataSource = self
             
             return cell
         }
@@ -206,7 +219,16 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
                                 min(52 + newTagText.size(attributes:
                     [NSFontAttributeName: TagCellParams.font]).width,
                                     collectionView.frame.width))
-                return CGSize(width: width, height: TagCellParams.height)
+                
+                var height = TagCellParams.height
+                
+                if newTagText.characters.count > 0 && autocompleteResults.count > 0 {
+                    
+                    height += TagCellParams.autocompleteTopMargin +
+                        CGFloat(autocompleteResults.count) * TagCellParams.autocompleteRowHeight
+                }
+                
+                return CGSize(width: width, height: height)
             }
         }
         
@@ -223,5 +245,37 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
         
     }
     
+    
+}
+
+extension TagsControlCell: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autocompleteResults.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellId.autocomplete)
+            as! AutocompleteCell
+        
+        cell.title = autocompleteResults[indexPath.row]
+        cell.highlightedTitle = newTagText
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TagCellParams.autocompleteRowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        newTagText = autocompleteResults[indexPath.row]
+        newTagCellDidSave()
+    }
     
 }

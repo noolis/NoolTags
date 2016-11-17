@@ -12,17 +12,22 @@ class NewTagCell: UICollectionViewCell {
 
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var txfTag: UITextField!
+    @IBOutlet weak var tvAutocomplete: UITableView!
     
     var delegate: NewTagCellDelegate?
     
     var mode: TagCellMode = .display
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         txfTag.delegate = self
         txfTag.font = TagCellParams.font
+        txfTag.addTarget(self, action: #selector(NewTagCell.textFieldDidChange),
+                         for: .editingChanged)
+        
+        let nib = UINib(nibName: CellId.autocomplete, bundle: nil)
+        tvAutocomplete.register(nib, forCellReuseIdentifier: CellId.autocomplete)
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {
@@ -58,13 +63,11 @@ extension NewTagCell: UITextFieldDelegate {
         return true
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textFieldDidChange() {
         
         if let delegate = delegate {
-            delegate.newTagCellDidChange(text: textField.text! + string)
+            delegate.newTagCellDidChange(text: txfTag.text!)
         }
-        
-        return true
     }
     
 }

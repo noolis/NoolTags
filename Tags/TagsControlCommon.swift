@@ -38,6 +38,7 @@ struct CellId {
     static let tag = "TagCell"
     static let newTag = "NewTagCell"
     static let tagsControl = "TagsControlCell"
+    static let autocomplete = "AutocompleteCell"
 }
 
 struct TagCellParams {
@@ -47,6 +48,9 @@ struct TagCellParams {
     static var rightMargin = CGFloat(2)
     static var buttonWidth = CGFloat(36)
     static var height = CGFloat(40)
+    
+    static var autocompleteTopMargin = CGFloat(10)
+    static var autocompleteRowHeight = CGFloat(20)
     
     static var lblTrailingConstantForDisplay = CGFloat(10)
     static var lblTrailingConstantForEdit = CGFloat(50)

@@ -20,6 +20,8 @@
 		3DD432851DDB09D7009F8C13 /* NewTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD432831DDB09D7009F8C13 /* NewTagCell.xib */; };
 		3DD432881DDB0A3F009F8C13 /* TagsControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD432861DDB0A3F009F8C13 /* TagsControlCell.swift */; };
 		3DD432891DDB0A3F009F8C13 /* TagsControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD432871DDB0A3F009F8C13 /* TagsControlCell.xib */; };
+		3DF7725C1DDDA84B00293727 /* AutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7725B1DDDA84B00293727 /* AutocompleteCell.swift */; };
+		3DF7725E1DDDA8AB00293727 /* AutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF7725D1DDDA8AB00293727 /* AutocompleteCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		3DD432831DDB09D7009F8C13 /* NewTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTagCell.xib; sourceTree = "<group>"; };
 		3DD432861DDB0A3F009F8C13 /* TagsControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsControlCell.swift; sourceTree = "<group>"; };
 		3DD432871DDB0A3F009F8C13 /* TagsControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsControlCell.xib; sourceTree = "<group>"; };
+		3DF7725B1DDDA84B00293727 /* AutocompleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteCell.swift; sourceTree = "<group>"; };
+		3DF7725D1DDDA8AB00293727 /* AutocompleteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutocompleteCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				3DD4327F1DDB09BC009F8C13 /* TagCell.xib */,
 				3DD432821DDB09D7009F8C13 /* NewTagCell.swift */,
 				3DD432831DDB09D7009F8C13 /* NewTagCell.xib */,
+				3DF7725B1DDDA84B00293727 /* AutocompleteCell.swift */,
+				3DF7725D1DDDA8AB00293727 /* AutocompleteCell.xib */,
 				3DD432861DDB0A3F009F8C13 /* TagsControlCell.swift */,
 				3DD432871DDB0A3F009F8C13 /* TagsControlCell.xib */,
 				3D83AE391DDC612C00F84362 /* LeftAlignedCollectionViewFlowLayout.swift */,
@@ -148,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF7725E1DDDA8AB00293727 /* AutocompleteCell.xib in Resources */,
 				3DD432891DDB0A3F009F8C13 /* TagsControlCell.xib in Resources */,
 				3DD432731DDB0828009F8C13 /* LaunchScreen.storyboard in Resources */,
 				3DD432851DDB09D7009F8C13 /* NewTagCell.xib in Resources */,
@@ -167,6 +174,7 @@
 				3DD432841DDB09D7009F8C13 /* NewTagCell.swift in Sources */,
 				3DD432801DDB09BC009F8C13 /* TagCell.swift in Sources */,
 				3D83AE3C1DDC659300F84362 /* TagsControlCommon.swift in Sources */,
+				3DF7725C1DDDA84B00293727 /* AutocompleteCell.swift in Sources */,
 				3D83AE3A1DDC612D00F84362 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3DD432881DDB0A3F009F8C13 /* TagsControlCell.swift in Sources */,
 				3DD4326B1DDB0828009F8C13 /* ViewController.swift in Sources */,

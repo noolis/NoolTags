@@ -16,8 +16,10 @@ class ViewController: UIViewController {
     var mode = TagCellMode.display
     var onlyAvailableTags = false
     var tags = ["First tag", "Second tag", "Third tag", "Fourth tag", "Really long long tag"]
-    var availableTags = ["First tag", "Second tag", "Third tag", "Fourth tag", "Really long long tag", "Tag 6", "Tag 7", "Tag 8"]
+    var availableTags = ["First tag", "Second tag", "Third tag", "Fourth tag",
+                         "Really long long tag", "Tag 6", "Tag 7", "Tag 8", "Tomek jest super"]
     var tagsControlHeight: CGFloat = 46
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
