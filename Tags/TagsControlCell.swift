@@ -14,6 +14,7 @@ class TagsControlCell: UICollectionViewCell {
     
     @IBOutlet weak var cvTags: UICollectionView!
     
+    var newTagCell: NewTagCell?
     var newTagCellMode = TagCellMode.display
     var newTagText = ""
     
@@ -184,6 +185,7 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.newTag,
                                                           for: indexPath) as! NewTagCell
             
+            newTagCell = cell
             cell.delegate = self
             cell.mode = newTagCellMode
             tvAutocomplete = cell.tvAutocomplete
@@ -215,17 +217,23 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
                 return CGSize(width: TagCellParams.height,
                               height: TagCellParams.height)
             } else {
-                let width = max(102,
-                                min(52 + newTagText.size(attributes:
-                    [NSFontAttributeName: TagCellParams.font]).width,
-                                    collectionView.frame.width))
+                
+                var longestTextWidth = newTagText.size(attributes:
+                    [NSFontAttributeName: TagCellParams.font]).width
+                
+                for result in autocompleteResults {
+                    
+                    longestTextWidth = max(longestTextWidth,
+                                           result.size(attributes:
+                        [NSFontAttributeName: TagCellParams.font]).width)
+                }
+                
+                let width = max(102, min(52 + longestTextWidth, collectionView.frame.width))
                 
                 var height = TagCellParams.height
                 
                 if newTagText.characters.count > 0 && autocompleteResults.count > 0 {
-                    
-                    height += TagCellParams.autocompleteTopMargin +
-                        CGFloat(autocompleteResults.count) * TagCellParams.autocompleteRowHeight
+                    height += CGFloat(autocompleteResults.count) * TagCellParams.autocompleteRowHeight
                 }
                 
                 return CGSize(width: width, height: height)
@@ -276,6 +284,7 @@ extension TagsControlCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         newTagText = autocompleteResults[indexPath.row]
         newTagCellDidSave()
+        newTagCell?.text = newTagText
     }
     
 }

@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MYo-g1-7ul" id="mXy-eY-ZdV">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="19"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw0-fW-SVK">
-                        <rect key="frame" x="8" y="2" width="36" height="17"/>
+                        <rect key="frame" x="10" y="1" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -27,7 +27,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Fw0-fW-SVK" firstAttribute="centerY" secondItem="mXy-eY-ZdV" secondAttribute="centerY" id="XP9-AA-LVl"/>
-                    <constraint firstItem="Fw0-fW-SVK" firstAttribute="leading" secondItem="mXy-eY-ZdV" secondAttribute="leading" constant="8" id="omD-xO-VqA"/>
+                    <constraint firstItem="Fw0-fW-SVK" firstAttribute="leading" secondItem="mXy-eY-ZdV" secondAttribute="leading" constant="10" id="omD-xO-VqA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

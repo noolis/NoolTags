@@ -17,6 +17,13 @@ class NewTagCell: UICollectionViewCell {
     var delegate: NewTagCellDelegate?
     
     var mode: TagCellMode = .display
+    var text = "" {
+        didSet {
+            if txfTag != nil {
+                txfTag.text = text
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,7 +61,7 @@ extension NewTagCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        textField.text = ""
+        text = ""
         
         if let delegate = delegate {
             delegate.newTagCellDidSave()
