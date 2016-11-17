@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D83AE3A1DDC612D00F84362 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83AE391DDC612C00F84362 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		3D83AE3A1DDC612D00F84362 /* TopLeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83AE391DDC612C00F84362 /* TopLeftAlignedCollectionViewFlowLayout.swift */; };
 		3D83AE3C1DDC659300F84362 /* TagsControlCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83AE3B1DDC659300F84362 /* TagsControlCommon.swift */; };
 		3DD432691DDB0828009F8C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD432681DDB0828009F8C13 /* AppDelegate.swift */; };
 		3DD4326B1DDB0828009F8C13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD4326A1DDB0828009F8C13 /* ViewController.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D83AE391DDC612C00F84362 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		3D83AE391DDC612C00F84362 /* TopLeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		3D83AE3B1DDC659300F84362 /* TagsControlCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsControlCommon.swift; sourceTree = "<group>"; };
 		3DD432651DDB0828009F8C13 /* Tags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD432681DDB0828009F8C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 				3DF7725D1DDDA8AB00293727 /* AutocompleteCell.xib */,
 				3DD432861DDB0A3F009F8C13 /* TagsControlCell.swift */,
 				3DD432871DDB0A3F009F8C13 /* TagsControlCell.xib */,
-				3D83AE391DDC612C00F84362 /* LeftAlignedCollectionViewFlowLayout.swift */,
+				3D83AE391DDC612C00F84362 /* TopLeftAlignedCollectionViewFlowLayout.swift */,
 				3D83AE3B1DDC659300F84362 /* TagsControlCommon.swift */,
 			);
 			path = Tags;
@@ -175,7 +175,7 @@
 				3DD432801DDB09BC009F8C13 /* TagCell.swift in Sources */,
 				3D83AE3C1DDC659300F84362 /* TagsControlCommon.swift in Sources */,
 				3DF7725C1DDDA84B00293727 /* AutocompleteCell.swift in Sources */,
-				3D83AE3A1DDC612D00F84362 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
+				3D83AE3A1DDC612D00F84362 /* TopLeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3DD432881DDB0A3F009F8C13 /* TagsControlCell.swift in Sources */,
 				3DD4326B1DDB0828009F8C13 /* ViewController.swift in Sources */,
 				3DD432691DDB0828009F8C13 /* AppDelegate.swift in Sources */,

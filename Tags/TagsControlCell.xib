@@ -21,7 +21,7 @@
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5xg-dj-ouZ">
                         <rect key="frame" x="0.0" y="0.0" width="321" height="100"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <collectionViewLayout key="collectionViewLayout" id="GH4-3S-fCt" customClass="LeftAlignedCollectionViewFlowLayout" customModule="Tags" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="GH4-3S-fCt" customClass="TopLeftAlignedCollectionViewFlowLayout" customModule="Tags" customModuleProvider="target"/>
                     </collectionView>
                 </subviews>
             </view>
