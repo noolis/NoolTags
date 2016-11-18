@@ -35,16 +35,29 @@ class AutocompleteCell: UITableViewCell {
             NSForegroundColorAttributeName: UIColor.gray
         ]
         
-        let attrString = NSMutableAttributedString(string: title, attributes: grayAttr)
-        
-        let range = (title as NSString).range(of: highlightedTitle)
-        
         let orangeAttr: [String: AnyObject] = [
             NSFontAttributeName: TagCellParams.font,
             NSForegroundColorAttributeName: UIColor.orange
         ]
         
-        attrString.setAttributes(orangeAttr, range: range)
+        let attrString = NSMutableAttributedString(string: title, attributes: grayAttr)
+        
+        var lastFoundIndex = 0
+        for char in highlightedTitle.characters {
+            
+            let nsstring = (title as NSString).substring(from: lastFoundIndex) as NSString
+            
+            var range = nsstring.range(of: String(char), options: .caseInsensitive)
+            
+            if range.location != NSNotFound {
+                
+                range.location += lastFoundIndex
+                lastFoundIndex = range.location + 1
+                
+                attrString.setAttributes(orangeAttr, range: range)
+            }
+            
+        }
         
         lblTitle.attributedText = attrString
     }

@@ -18,8 +18,15 @@ class TagsControlCell: UICollectionViewCell {
     var newTagCellMode = TagCellMode.display
     var newTagText = ""
     
+    var modeUpdateBlock = false
+    
     var mode = TagCellMode.display {
         didSet {
+            
+            guard modeUpdateBlock == false else { return }
+            
+            modeUpdateBlock = true
+            
             cvTags.performBatchUpdates({
                 if self.mode == .display {
                     if self.cvTags.numberOfItems(inSection: 0) == self.tags.count + 1 {
@@ -35,6 +42,7 @@ class TagsControlCell: UICollectionViewCell {
                     delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
                 }
                 self.cvTags.reloadData()
+                self.modeUpdateBlock = false
             })
         }
     }
@@ -76,7 +84,7 @@ class TagsControlCell: UICollectionViewCell {
     var autocompleteResults: [String] {
         get {
             let notUsedTags = availableTags.filter { !tags.contains($0) }
-            return notUsedTags.filter { $0.lowercased().contains(newTagText.lowercased()) }
+            return notUsedTags.filter { $0.fuzzySearch(stringToSearch: newTagText) }
         }
     }
     

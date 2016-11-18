@@ -50,11 +50,11 @@ struct TagCellParams {
     static var height = CGFloat(40)
     
     static var autocompleteTopMargin = CGFloat(10)
-    static var autocompleteRowHeight = CGFloat(20)
+    static var autocompleteRowHeight = CGFloat(25)
     
     static var lblTrailingConstantForDisplay = CGFloat(10)
     static var lblTrailingConstantForEdit = CGFloat(50)
     
-    static var btnDeleteImage = UIImage()
-    static var btnAddImage = UIImage()
+    static var newTagTxfLeadingConstraint = CGFloat(12) 
+    
 }

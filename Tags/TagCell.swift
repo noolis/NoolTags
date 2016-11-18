@@ -36,6 +36,8 @@ class TagCell: UICollectionViewCell {
         
         mode = .display
         lblTag.font = TagCellParams.font
+        btnDelete.transform = CGAffineTransform.identity.rotated(by: CGFloat(M_PI_4)
+        )
         
     }
     

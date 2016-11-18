@@ -13,6 +13,7 @@ class NewTagCell: UICollectionViewCell {
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var txfTag: UITextField!
     @IBOutlet weak var tvAutocomplete: UITableView!
+    @IBOutlet weak var constrTxfLeading: NSLayoutConstraint!
     
     var delegate: NewTagCellDelegate?
     
@@ -40,9 +41,12 @@ class NewTagCell: UICollectionViewCell {
     @IBAction func btnAddTapped(_ sender: Any) {
         
         mode = mode == .display ? .edit : .display
+        constrTxfLeading.constant = mode == .display ? 0 :
+            TagCellParams.newTagTxfLeadingConstraint
         
         UIView.animate(withDuration: 0.3, animations: {
             self.btnAdd.transform = self.btnAdd.transform.rotated(by: CGFloat(M_PI_4))
+            self.layoutIfNeeded()
         })
         
         if let delegate = delegate {

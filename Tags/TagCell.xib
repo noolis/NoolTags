@@ -35,7 +35,8 @@
                                     <constraint firstAttribute="width" constant="35" id="De7-H2-A2b"/>
                                     <constraint firstAttribute="height" constant="35" id="Epz-G8-ULM"/>
                                 </constraints>
-                                <state key="normal" title="X">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="+">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
