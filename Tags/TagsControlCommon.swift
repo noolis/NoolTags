@@ -21,7 +21,7 @@ protocol TagsControlCellDelegate {
     
     func tagsControlDidUpdate(tags: [String])
     func tagsControlNeedsUpdate(height: CGFloat)
-    func tagsContolAvailableTags() -> [String]
+    func tagsControlAvailableTags() -> [String]
     func tagsControlTags() -> [String]
     func tagsControlShouldUseOnlyAvailableTags() -> Bool
 }

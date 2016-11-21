@@ -65,8 +65,6 @@ extension NewTagCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        text = ""
-        
         if let delegate = delegate {
             delegate.newTagCellDidSave()
         }

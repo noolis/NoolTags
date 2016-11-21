@@ -64,7 +64,7 @@ class NoolTagsVC: UIViewController {
     var availableTags: [String] {
         get {
             if let delegate = delegate {
-                return delegate.tagsContolAvailableTags()
+                return delegate.tagsControlAvailableTags()
             }
             return [String]()
         }
@@ -134,6 +134,7 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
     func newTagCellDidChange(text: String) {
         
         newTagText = text
+        newTagCell?.text = newTagText
         tvAutocomplete?.reloadData()
         cvTags.performBatchUpdates(nil, completion: { didComplete in
             
@@ -144,6 +145,12 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
     }
     
     func newTagCellDidSave() {
+        
+        if (shouldUseOnlyAvailableTags && !availableTags.contains(newTagText)) ||
+            tags.contains(newTagText) || newTagText.characters.count == 0 {
+            
+            return
+        }
         
         tags.append(newTagText)
         

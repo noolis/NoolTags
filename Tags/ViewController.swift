@@ -50,7 +50,6 @@ class ViewController: UIViewController {
     @IBAction func btnAvailableTagesTapped(_ sender: Any) {
         
         onlyAvailableTags = !onlyAvailableTags
-        cvContent.reloadData()
     }
     
 }
@@ -67,7 +66,7 @@ extension ViewController: TagsControlCellDelegate {
         cvContent.performBatchUpdates(nil, completion: nil)
     }
     
-    func tagsContolAvailableTags() -> [String] {
+    func tagsControlAvailableTags() -> [String] {
         return availableTags
     }
     
