@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum TagCellMode {
+enum NoolTagCellMode {
     case display, edit
 }
 
@@ -17,7 +17,7 @@ protocol TagCellDelegate {
     func tagCellDeleted(at indexPath: IndexPath)
 }
 
-protocol TagsControlCellDelegate {
+protocol NoolTagsDelegate {
     
     func tagsControlDidUpdate(tags: [String])
     func tagsControlNeedsUpdate(height: CGFloat)
@@ -29,15 +29,14 @@ protocol TagsControlCellDelegate {
 protocol NewTagCellDelegate {
     
     func newTagCellDidChange(text: String)
-    func newTagCellDidChange(mode: TagCellMode)
+    func newTagCellDidChange(mode: NoolTagCellMode)
     func newTagCellDidSave()
 }
 
-struct CellId {
+struct NoolCellId {
 
     static let tag = "TagCell"
     static let newTag = "NewTagCell"
-    static let tagsControl = "TagsControlCell"
     static let autocomplete = "AutocompleteCell"
 }
 

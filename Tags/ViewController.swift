@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnEditDisplay: UIButton!
     @IBOutlet weak var cvContent: UICollectionView!
     
-    var mode = TagCellMode.display
+    var mode = NoolTagCellMode.display
     var onlyAvailableTags = false
     var tags = ["First tag", "Second tag", "Third tag", "Fourth tag", "Really long long tag"]
     var availableTags = ["First tag", "Second tag", "Third tag", "Fourth tag",
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: TagsControlCellDelegate {
+extension ViewController: NoolTagsDelegate {
     
     func tagsControlDidUpdate(tags: [String]) {
         self.tags = tags

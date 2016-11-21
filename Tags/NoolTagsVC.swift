@@ -15,12 +15,12 @@ class NoolTagsVC: UIViewController {
     @IBOutlet weak var cvTags: UICollectionView!
     
     var newTagCell: NewTagCell?
-    var newTagCellMode = TagCellMode.display
+    var newTagCellMode = NoolTagCellMode.display
     var newTagText = ""
     
     var modeUpdateBlock = false
     
-    var mode = TagCellMode.display {
+    var mode = NoolTagCellMode.display {
         didSet {
             
             guard modeUpdateBlock == false, cvTags != nil else { return }
@@ -79,7 +79,7 @@ class NoolTagsVC: UIViewController {
         }
     }
     
-    var delegate: TagsControlCellDelegate?
+    var delegate: NoolTagsDelegate?
     
     var autocompleteResults: [String] {
         get {
@@ -97,10 +97,10 @@ class NoolTagsVC: UIViewController {
         
         mode = .display
         
-        var nib = UINib(nibName: CellId.tag, bundle: nil)
-        cvTags.register(nib, forCellWithReuseIdentifier: CellId.tag)
-        nib = UINib(nibName: CellId.newTag, bundle: nil)
-        cvTags.register(nib, forCellWithReuseIdentifier: CellId.newTag)
+        var nib = UINib(nibName: NoolCellId.tag, bundle: nil)
+        cvTags.register(nib, forCellWithReuseIdentifier: NoolCellId.tag)
+        nib = UINib(nibName: NoolCellId.newTag, bundle: nil)
+        cvTags.register(nib, forCellWithReuseIdentifier: NoolCellId.newTag)
         
         cvTags.dataSource = self
         cvTags.delegate = self
@@ -119,7 +119,7 @@ class NoolTagsVC: UIViewController {
 
 extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
     
-    func newTagCellDidChange(mode: TagCellMode) {
+    func newTagCellDidChange(mode: NoolTagCellMode) {
         
         newTagCellMode = mode
         cvTags.performBatchUpdates(nil, completion: { didComplete in
@@ -199,7 +199,7 @@ extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if mode == .edit && indexPath.row == tags.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.newTag,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoolCellId.newTag,
                                                           for: indexPath) as! NewTagCell
             
             newTagCell = cell
@@ -212,7 +212,7 @@ extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.tag,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoolCellId.tag,
                                                       for: indexPath) as! TagCell
         
         cell.delegate = self
@@ -285,7 +285,7 @@ extension NoolTagsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellId.autocomplete)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NoolCellId.autocomplete)
             as! AutocompleteCell
         
         cell.title = autocompleteResults[indexPath.row]

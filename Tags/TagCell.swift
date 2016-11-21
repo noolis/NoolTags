@@ -16,7 +16,7 @@ class TagCell: UICollectionViewCell {
     
     @IBOutlet weak var constrBtnDeleteLeading: NSLayoutConstraint!
     
-    var mode = TagCellMode.display
+    var mode = NoolTagCellMode.display
     var text: String = "" {
         didSet {
             lblTag.text = text

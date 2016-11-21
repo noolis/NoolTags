@@ -17,7 +17,7 @@ class NewTagCell: UICollectionViewCell {
     
     var delegate: NewTagCellDelegate?
     
-    var mode: TagCellMode = .display
+    var mode: NoolTagCellMode = .display
     var text = "" {
         didSet {
             if txfTag != nil {
@@ -34,8 +34,8 @@ class NewTagCell: UICollectionViewCell {
         txfTag.addTarget(self, action: #selector(NewTagCell.textFieldDidChange),
                          for: .editingChanged)
         
-        let nib = UINib(nibName: CellId.autocomplete, bundle: nil)
-        tvAutocomplete.register(nib, forCellReuseIdentifier: CellId.autocomplete)
+        let nib = UINib(nibName: NoolCellId.autocomplete, bundle: nil)
+        tvAutocomplete.register(nib, forCellReuseIdentifier: NoolCellId.autocomplete)
     }
     
     @IBAction func btnAddTapped(_ sender: Any) {
