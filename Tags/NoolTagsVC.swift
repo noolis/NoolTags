@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TagsControlCell: UICollectionViewCell {
+class NoolTagsVC: UIViewController {
 
     //MARK: - Properties
     
@@ -23,7 +23,7 @@ class TagsControlCell: UICollectionViewCell {
     var mode = TagCellMode.display {
         didSet {
             
-            guard modeUpdateBlock == false else { return }
+            guard modeUpdateBlock == false, cvTags != nil else { return }
             
             modeUpdateBlock = true
             
@@ -90,10 +90,12 @@ class TagsControlCell: UICollectionViewCell {
     
     var tvAutocomplete: UITableView?
     
-    //MARK: - UICollectionViewCell
+    //MARK: - View lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        mode = .display
         
         var nib = UINib(nibName: CellId.tag, bundle: nil)
         cvTags.register(nib, forCellWithReuseIdentifier: CellId.tag)
@@ -115,7 +117,7 @@ class TagsControlCell: UICollectionViewCell {
 
 //MARK: - TagCell & NewTagCell Delegate
 
-extension TagsControlCell: NewTagCellDelegate, TagCellDelegate {
+extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
     
     func newTagCellDidChange(mode: TagCellMode) {
         
@@ -175,7 +177,7 @@ extension TagsControlCell: NewTagCellDelegate, TagCellDelegate {
 
 //MARK: - UICollectionView Delegate & DataSource
 
-extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -222,26 +224,26 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
         if mode == .edit && indexPath.row == tags.count {
             
             if newTagCellMode == .display {
-                return CGSize(width: TagCellParams.height,
-                              height: TagCellParams.height)
+                return CGSize(width: NoolTagsCommon.cellHeight,
+                              height: NoolTagsCommon.cellHeight)
             } else {
                 
                 var longestTextWidth = newTagText.size(attributes:
-                    [NSFontAttributeName: TagCellParams.font]).width
+                    [NSFontAttributeName: NoolTagsCommon.font]).width
                 
                 for result in autocompleteResults {
                     
                     longestTextWidth = max(longestTextWidth,
                                            result.size(attributes:
-                        [NSFontAttributeName: TagCellParams.font]).width)
+                        [NSFontAttributeName: NoolTagsCommon.font]).width)
                 }
                 
                 let width = max(102, min(52 + longestTextWidth, collectionView.frame.width))
                 
-                var height = TagCellParams.height
+                var height = NoolTagsCommon.cellHeight
                 
                 if newTagText.characters.count > 0 && autocompleteResults.count > 0 {
-                    height += CGFloat(autocompleteResults.count) * TagCellParams.autocompleteRowHeight
+                    height += CGFloat(autocompleteResults.count) * NoolTagsCommon.autocompleteRowHeight
                 }
                 
                 return CGSize(width: width, height: height)
@@ -250,21 +252,21 @@ extension TagsControlCell: UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let tag = tags[indexPath.row]
         
-        var width = tag.size(attributes: [NSFontAttributeName: TagCellParams.font]).width
-        width += (mode == .display ? TagCellParams.lblTrailingConstantForDisplay :
-            TagCellParams.buttonWidth) + TagCellParams.leftMargin
-                + TagCellParams.rightMargin
+        var width = tag.size(attributes: [NSFontAttributeName: NoolTagsCommon.font]).width
+        width += (mode == .display ? NoolTagsCommon.lblTrailingConstantForDisplay :
+            NoolTagsCommon.buttonWidth) + NoolTagsCommon.leftMargin
+                + NoolTagsCommon.rightMargin
         
         width = min(width, collectionView.frame.width)
         
-        return CGSize(width: width, height: TagCellParams.height)
+        return CGSize(width: width, height: NoolTagsCommon.cellHeight)
         
     }
-    
-    
 }
 
-extension TagsControlCell: UITableViewDataSource, UITableViewDelegate {
+//MARK: - UITableView DataSource & Delegate
+
+extension NoolTagsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return autocompleteResults.count
@@ -286,7 +288,7 @@ extension TagsControlCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return TagCellParams.autocompleteRowHeight
+        return NoolTagsCommon.autocompleteRowHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

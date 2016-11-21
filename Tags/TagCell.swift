@@ -21,8 +21,8 @@ class TagCell: UICollectionViewCell {
         didSet {
             lblTag.text = text
             
-            let value = TagCellParams.leftMargin + text.size(attributes:
-                [NSFontAttributeName: TagCellParams.font]).width
+            let value = NoolTagsCommon.leftMargin + text.size(attributes:
+                [NSFontAttributeName: NoolTagsCommon.font]).width
             constrBtnDeleteLeading.constant = value
             self.layoutIfNeeded()
         }
@@ -35,7 +35,7 @@ class TagCell: UICollectionViewCell {
         super.awakeFromNib()
         
         mode = .display
-        lblTag.font = TagCellParams.font
+        lblTag.font = NoolTagsCommon.font
         btnDelete.transform = CGAffineTransform.identity.rotated(by: CGFloat(M_PI_4)
         )
         

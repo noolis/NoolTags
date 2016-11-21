@@ -1,5 +1,5 @@
 //
-//  TagsControlCommon.swift
+//  NoolTagsCommon.swift
 //  Tags
 //
 //  Created by Tomasz Kopycki on 16/11/2016.
@@ -41,13 +41,13 @@ struct CellId {
     static let autocomplete = "AutocompleteCell"
 }
 
-struct TagCellParams {
+struct NoolTagsCommon {
     
     static var font = UIFont.systemFont(ofSize: 14)
     static var leftMargin = CGFloat(12)
     static var rightMargin = CGFloat(2)
     static var buttonWidth = CGFloat(36)
-    static var height = CGFloat(40)
+    static var cellHeight = CGFloat(40)
     
     static var autocompleteTopMargin = CGFloat(10)
     static var autocompleteRowHeight = CGFloat(25)

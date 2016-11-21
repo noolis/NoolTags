@@ -20,12 +20,17 @@ class ViewController: UIViewController {
                          "Really long long tag", "Tag 6", "Tag 7", "Tag 8", "Tomek jest super"]
     var tagsControlHeight: CGFloat = 46
     
+    var tagsVC: NoolTagsVC?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: CellId.tagsControl, bundle: nil)
-        cvContent.register(nib, forCellWithReuseIdentifier: CellId.tagsControl)
+        tagsVC = NoolTagsVC(nibName: "NoolTagsVC", bundle: nil)
+        tagsVC?.delegate = self
+        
+        let nib = UINib(nibName: "TagsCell", bundle: nil)
+        cvContent.register(nib, forCellWithReuseIdentifier: "TagsCell")
         
         cvContent.delegate = self
         cvContent.dataSource = self
@@ -87,11 +92,23 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.tagsControl,
-                                                      for: indexPath) as! TagsControlCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagsCell",
+                                                      for: indexPath) as! TagsCell
         
-        cell.delegate = self
-        cell.mode = mode
+        tagsVC?.mode = mode
+        
+        if let view = tagsVC?.view, !cell.subviews.contains(view) {
+            cell.addSubview(view)
+            
+            cell.addConstraints(
+                NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|",
+                                               options: [], metrics: nil,
+                                               views: ["view": view]))
+            cell.addConstraints(
+                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
+                                               options: [], metrics: nil,
+                                               views: ["view": view]))
+        }
         
         return cell
     }

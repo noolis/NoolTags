@@ -31,12 +31,12 @@ class AutocompleteCell: UITableViewCell {
     func updateHighlight() {
         
         let grayAttr: [String: AnyObject] = [
-            NSFontAttributeName: TagCellParams.font,
+            NSFontAttributeName: NoolTagsCommon.font,
             NSForegroundColorAttributeName: UIColor.gray
         ]
         
         let orangeAttr: [String: AnyObject] = [
-            NSFontAttributeName: TagCellParams.font,
+            NSFontAttributeName: NoolTagsCommon.font,
             NSForegroundColorAttributeName: UIColor.orange
         ]
         
