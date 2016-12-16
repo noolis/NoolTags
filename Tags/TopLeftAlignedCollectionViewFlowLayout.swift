@@ -28,7 +28,11 @@ class TopLeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let attributes = super.layoutAttributesForElements(in: rect)
+        
+        guard let superLA = super.layoutAttributesForElements(in: rect) else { return nil }
+        
+        var attributes = [UICollectionViewLayoutAttributes]()
+        attributes.append(contentsOf: superLA)
         
         var leftMargin = sectionInset.left
         var maxY: CGFloat = -1.0
@@ -37,7 +41,7 @@ class TopLeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         var lastTopAlignedIndex = -5
         var previousY = sectionInset.top
         
-        attributes?.forEach { layoutAttribute in
+        attributes.forEach { layoutAttribute in
             
             i+=1
             

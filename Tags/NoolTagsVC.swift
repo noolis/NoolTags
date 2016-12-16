@@ -8,8 +8,10 @@
 
 import UIKit
 
-class NoolTagsVC: UIViewController {
 
+
+class NoolTagsVC: UIViewController {
+    
     //MARK: - Properties
     
     @IBOutlet weak var cvTags: UICollectionView!
@@ -26,6 +28,9 @@ class NoolTagsVC: UIViewController {
             guard modeUpdateBlock == false, cvTags != nil else { return }
             
             modeUpdateBlock = true
+            if mode == .display {
+                newTagCellMode = .display
+            }
             
             cvTags.performBatchUpdates({
                 if self.mode == .display {
@@ -34,12 +39,14 @@ class NoolTagsVC: UIViewController {
                                                                section: 0)])
                     }
                 } else {
-                    self.cvTags.insertItems(at: [IndexPath(row: self.tags.count, section: 0)])
+                    if self.cvTags.numberOfItems(inSection: 0) == self.tags.count {
+                        self.cvTags.insertItems(at: [IndexPath(row: self.tags.count, section: 0)])
+                    }
                 }
                 
             }, completion: { didFinish in
                 if let delegate = self.delegate {
-                    delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
+                    delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
                 }
                 self.cvTags.reloadData()
                 self.modeUpdateBlock = false
@@ -50,21 +57,21 @@ class NoolTagsVC: UIViewController {
     var tags: [String] {
         get {
             if let delegate = delegate {
-                return delegate.tagsControlTags()
+                return delegate.tagsControlTags(self)
             }
             return [String]()
         }
         set {
             if let delegate = delegate {
-                delegate.tagsControlDidUpdate(tags: newValue)
-                delegate.tagsControlNeedsUpdate(height: cvTags.contentSize.height)
+                delegate.tagsControl(self, didUpdate: newValue)
+                delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
             }
         }
     }
     var availableTags: [String] {
         get {
             if let delegate = delegate {
-                return delegate.tagsControlAvailableTags()
+                return delegate.tagsControlAvailableTags(self)
             }
             return [String]()
         }
@@ -73,7 +80,7 @@ class NoolTagsVC: UIViewController {
     var shouldUseOnlyAvailableTags: Bool {
         get {
             if let delegate = delegate {
-                return delegate.tagsControlShouldUseOnlyAvailableTags()
+                return delegate.tagsControlShouldUseOnlyAvailableTags(self)
             }
             return false
         }
@@ -108,9 +115,20 @@ class NoolTagsVC: UIViewController {
         cvTags.reloadData()
         
         if let delegate = delegate {
-            delegate.tagsControlNeedsUpdate(height: cvTags.contentSize.height)
+            delegate.tagsControl(self, needsUpdate: cvTags.contentSize.height)
         }
-            
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        cvTags.reloadData()
+        
+        if let delegate = delegate {
+            delegate.tagsControl(self, needsUpdate: cvTags.contentSize.height)
+        }
+        
     }
     
 }
@@ -125,7 +143,7 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
         cvTags.performBatchUpdates(nil, completion: { didComplete in
             
             if let delegate = self.delegate {
-                delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
+                delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
             }
         })
         
@@ -139,7 +157,7 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
         cvTags.performBatchUpdates(nil, completion: { didComplete in
             
             if let delegate = self.delegate {
-                delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
+                delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
             }
         })
     }
@@ -159,7 +177,7 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
         }, completion: { didComplete in
             
             if let delegate = self.delegate {
-                delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
+                delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
             }
         })
         
@@ -170,12 +188,12 @@ extension NoolTagsVC: NewTagCellDelegate, TagCellDelegate {
         
         tags.remove(at: indexPath.row)
         
-        cvTags.performBatchUpdates({ 
+        cvTags.performBatchUpdates({
             self.cvTags.deleteItems(at: [indexPath])
         }, completion: { didComplete in
             
             if let delegate = self.delegate {
-                delegate.tagsControlNeedsUpdate(height: self.cvTags.contentSize.height)
+                delegate.tagsControl(self, needsUpdate: self.cvTags.contentSize.height)
             }
             self.cvTags.reloadData()
         })
@@ -205,6 +223,7 @@ extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             newTagCell = cell
             cell.delegate = self
             cell.mode = newTagCellMode
+            cell.txfTag.text = ""
             tvAutocomplete = cell.tvAutocomplete
             tvAutocomplete?.delegate = self
             tvAutocomplete?.dataSource = self
@@ -242,7 +261,7 @@ extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
                     
                     longestTextWidth = max(longestTextWidth,
                                            result.size(attributes:
-                        [NSFontAttributeName: NoolTagsCommon.font]).width)
+                                            [NSFontAttributeName: NoolTagsCommon.font]).width)
                 }
                 
                 let width = max(102, min(52 + longestTextWidth, collectionView.frame.width))
@@ -262,12 +281,19 @@ extension NoolTagsVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         var width = tag.size(attributes: [NSFontAttributeName: NoolTagsCommon.font]).width
         width += (mode == .display ? NoolTagsCommon.lblTrailingConstantForDisplay :
             NoolTagsCommon.buttonWidth) + NoolTagsCommon.leftMargin
-                + NoolTagsCommon.rightMargin
+            + NoolTagsCommon.rightMargin
         
         width = min(width, collectionView.frame.width)
         
         return CGSize(width: width, height: NoolTagsCommon.cellHeight)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let delegate = delegate {
+            delegate?.tagsControl(self, didSelect: tags[indexPath.row])
+        }
     }
 }
 

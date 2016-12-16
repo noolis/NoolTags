@@ -17,7 +17,11 @@ class NewTagCell: UICollectionViewCell {
     
     var delegate: NewTagCellDelegate?
     
-    var mode: NoolTagCellMode = .display
+    var mode: NoolTagCellMode = .display {
+        didSet {
+            changeLayout()
+        }
+    }
     var text = "" {
         didSet {
             if txfTag != nil {
@@ -41,13 +45,8 @@ class NewTagCell: UICollectionViewCell {
     @IBAction func btnAddTapped(_ sender: Any) {
         
         mode = mode == .display ? .edit : .display
-        constrTxfLeading.constant = mode == .display ? 0 :
-            NoolTagsCommon.newTagTxfLeadingConstraint
         
-        UIView.animate(withDuration: 0.3, animations: {
-            self.btnAdd.transform = self.btnAdd.transform.rotated(by: CGFloat(M_PI_4))
-            self.layoutIfNeeded()
-        })
+        changeLayout()
         
         if let delegate = delegate {
             delegate.newTagCellDidChange(mode: mode)
@@ -58,6 +57,18 @@ class NewTagCell: UICollectionViewCell {
         } else {
             txfTag.resignFirstResponder()
         }
+    }
+    
+    private func changeLayout() {
+        
+        constrTxfLeading.constant = mode == .display ? 0 :
+            NoolTagsCommon.newTagTxfLeadingConstraint
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            let angle = self.mode == .display ? 0 : CGFloat(M_PI_4)
+            self.btnAdd.transform = CGAffineTransform.identity.rotated(by: angle)
+            self.layoutIfNeeded()
+        })
     }
 }
 

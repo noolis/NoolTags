@@ -19,11 +19,12 @@ protocol TagCellDelegate {
 
 protocol NoolTagsDelegate {
     
-    func tagsControlDidUpdate(tags: [String])
-    func tagsControlNeedsUpdate(height: CGFloat)
-    func tagsControlAvailableTags() -> [String]
-    func tagsControlTags() -> [String]
-    func tagsControlShouldUseOnlyAvailableTags() -> Bool
+    func tagsControl(_ tagsControl: NoolTagsVC, didUpdate tags: [String])
+    func tagsControl(_ tagsControl: NoolTagsVC, needsUpdate height: CGFloat)
+    func tagsControlAvailableTags(_ tagsControl: NoolTagsVC) -> [String]
+    func tagsControlTags(_ tagsControl: NoolTagsVC) -> [String]
+    func tagsControlShouldUseOnlyAvailableTags(_ tagsControl: NoolTagsVC) -> Bool
+    func tagsControl(_ tagsControl: NoolTagsVC, didSelect tag: String)
 }
 
 protocol NewTagCellDelegate {
@@ -42,14 +43,14 @@ struct NoolCellId {
 
 struct NoolTagsCommon {
     
-    static var font = UIFont.systemFont(ofSize: 14)
+    static var font = UIFont(name: "Ubuntu", size: 12)!
     static var leftMargin = CGFloat(12)
     static var rightMargin = CGFloat(2)
-    static var buttonWidth = CGFloat(36)
-    static var cellHeight = CGFloat(40)
+    static var buttonWidth = CGFloat(30)
+    static var cellHeight = CGFloat(30)
     
     static var autocompleteTopMargin = CGFloat(10)
-    static var autocompleteRowHeight = CGFloat(25)
+    static var autocompleteRowHeight = CGFloat(20)
     
     static var lblTrailingConstantForDisplay = CGFloat(10)
     static var lblTrailingConstantForEdit = CGFloat(50)
